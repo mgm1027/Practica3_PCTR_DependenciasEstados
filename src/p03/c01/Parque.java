@@ -48,7 +48,18 @@ public class Parque implements IParque{
 	//
 	@Override
 	public void salirDelParque(String puerta) {
-		// TODO Auto-generated method stub
+		
+		// Si no hay salida por esa puerta, inicializamos
+		if (contadoresPersonasPuerta.get(puerta) == null){
+			contadoresPersonasPuerta.put(puerta, 0);
+		}
+				
+		// Disminuimos el contador total y aumentamos el individual
+		contadorPersonasTotales--;		
+		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
+				
+		// Imprimimos el estado del parque
+		imprimirInfo(puerta, "Entrada");
 		
 	}
 	
