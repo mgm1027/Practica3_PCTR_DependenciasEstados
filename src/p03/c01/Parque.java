@@ -37,8 +37,8 @@ public class Parque implements IParque{
 		
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
-		
 		this.notifyAll();
+		checkInvariante();
 		
 	}
 	
@@ -54,12 +54,13 @@ public class Parque implements IParque{
 				
 		// Disminuimos el contador total y aumentamos el individual
 		contadorPersonasTotales--;		
-		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
+		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)-1);
 				
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Salida");
 		
 		this.notifyAll();
+		checkInvariante();
 		
 	}
 	
@@ -90,7 +91,7 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeEntrar(){
-        if(contadorPersonasTotales >= aforoMaximo) {
+        while(contadorPersonasTotales >= aforoMaximo) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -100,7 +101,7 @@ public class Parque implements IParque{
     }
 
     protected void comprobarAntesDeSalir(){
-        if(contadorPersonasTotales <= 0) {
+        while(contadorPersonasTotales <= 0) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
