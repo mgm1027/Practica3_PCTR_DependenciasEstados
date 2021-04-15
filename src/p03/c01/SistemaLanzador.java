@@ -16,9 +16,9 @@ public class SistemaLanzador {
 			ActividadEntradaPuerta entradas = new ActividadEntradaPuerta(puerta, parque);
 			new Thread (entradas).start();
 			
-			// 
-			// TODO
-			//	
+            // Creacion de hilos de salida
+            ActividadSalidaPuerta salidas = new ActividadSalidaPuerta(puerta,parque);
+            new Thread (salidas).start();
 		}
 	}	
 }
