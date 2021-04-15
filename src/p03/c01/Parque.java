@@ -95,9 +95,7 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeSalir(){		// TODO
-		//
-		// TODO
-		//
+		assert contadorPersonasTotales > 0 : "INV: El parque esta vacio";
 	}
 
 
