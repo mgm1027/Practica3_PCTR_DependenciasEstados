@@ -6,16 +6,16 @@ import java.util.Hashtable;
 public class Parque implements IParque{
 
 
-	// TODO 
+	
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
 	private static final int aforoMaximo = 50;
 	
 	
-	public Parque() {	// TODO
+	public Parque() {	
 		contadorPersonasTotales = 0;
 		contadoresPersonasPuerta = new Hashtable<String, Integer>();
-		// TODO
+		
 	}
 
 
@@ -44,9 +44,7 @@ public class Parque implements IParque{
 		
 	}
 	
-	// 
-	// TODO Método salirDelParque
-	//
+	
 	@Override
 	public void salirDelParque(String puerta) {
 		
@@ -60,15 +58,15 @@ public class Parque implements IParque{
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
 				
 		// Imprimimos el estado del parque
-		imprimirInfo(puerta, "Entrada");
+		imprimirInfo(puerta, "Salida");
 		
 	}
 	
 	private void imprimirInfo (String puerta, String movimiento){
 		System.out.println(movimiento + " por puerta " + puerta);
-		System.out.println("--> Personas en el parque " + contadorPersonasTotales); //+ " tiempo medio de estancia: "  + tmedio);
+		System.out.println("--> Personas en el parque " + contadorPersonasTotales);
 		
-		// Iteramos por todas las puertas e imprimimos sus entradas
+		// Iteramos por todas las puertas e imprimimos sus entradas y salidas
 		for(String p: contadoresPersonasPuerta.keySet()){
 			System.out.println("----> Por puerta " + p + " " + contadoresPersonasPuerta.get(p));
 		}
@@ -90,11 +88,11 @@ public class Parque implements IParque{
 		// TODO
 	}
 
-	protected void comprobarAntesDeEntrar(){	// TODO
+	protected void comprobarAntesDeEntrar(){	
 		assert contadorPersonasTotales < aforoMaximo : "INV: El parque supera el aforo maximo";
 	}
 
-	protected void comprobarAntesDeSalir(){		// TODO
+	protected void comprobarAntesDeSalir(){		
 		assert contadorPersonasTotales > 0 : "INV: El parque esta vacio";
 	}
 
