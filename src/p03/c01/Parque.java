@@ -9,6 +9,7 @@ public class Parque implements IParque{
 	// TODO 
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
+	private static final int aforoMaximo = 50;
 	
 	
 	public Parque() {	// TODO
@@ -90,9 +91,7 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeEntrar(){	// TODO
-		//
-		// TODO
-		//
+		assert contadorPersonasTotales < aforoMaximo : "INV: El parque supera el aforo maximo";
 	}
 
 	protected void comprobarAntesDeSalir(){		// TODO
