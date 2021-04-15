@@ -20,7 +20,7 @@ public class Parque implements IParque{
 
 
 	@Override
-	public void entrarAlParque(String puerta){		// TODO
+	public synchronized void entrarAlParque(String puerta){		// TODO
 		//Comprobamos que el parque no se encuentre lleno.
 		comprobarAntesDeEntrar();
 		// Si no hay entradas por esa puerta, inicializamos
@@ -44,7 +44,7 @@ public class Parque implements IParque{
 	
 	
 	@Override
-	public void salirDelParque(String puerta) {
+	public synchronized void salirDelParque(String puerta) {
 		//Comprobamos que exita alguien que pueda salir del parque.
 		comprobarAntesDeSalir();
 		// Si no hay salida por esa puerta, inicializamos
