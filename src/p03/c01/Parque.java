@@ -38,10 +38,7 @@ public class Parque implements IParque{
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
 		
-		// TODO
-		
-		
-		// TODO
+		this.notifyAll();
 		
 	}
 	
@@ -61,6 +58,8 @@ public class Parque implements IParque{
 				
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Salida");
+		
+		this.notifyAll();
 		
 	}
 	
