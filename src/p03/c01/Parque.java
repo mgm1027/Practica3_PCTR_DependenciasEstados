@@ -23,6 +23,7 @@ public class Parque implements IParque{
 	public void entrarAlParque(String puerta){		// TODO
 		//Comprobamos que el parque no se encuentre lleno.
 		comprobarAntesDeEntrar();
+	
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
