@@ -5,12 +5,9 @@ import java.util.Hashtable;
 
 public class Parque implements IParque{
 
-
-	
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
 	private static final int aforoMaximo = 50;
-	
 	
 	public Parque() {	
 		contadorPersonasTotales = 0;
@@ -20,17 +17,14 @@ public class Parque implements IParque{
 
 
 	@Override
-	public synchronized void entrarAlParque(String puerta){		// TODO
+	public synchronized void entrarAlParque(String puerta){
+		
 		//Comprobamos que el parque no se encuentre lleno.
 		comprobarAntesDeEntrar();
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
-		}
-		
-		// TODO
-				
-		
+		}		
 		// Aumentamos el contador total y el individual
 		contadorPersonasTotales++;		
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)+1);
@@ -45,20 +39,18 @@ public class Parque implements IParque{
 	
 	@Override
 	public synchronized void salirDelParque(String puerta) {
+		
 		//Comprobamos que exita alguien que pueda salir del parque.
 		comprobarAntesDeSalir();
 		// Si no hay salida por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
-		}
-				
+		}		
 		// Disminuimos el contador total y aumentamos el individual
 		contadorPersonasTotales--;		
-		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)-1);
-				
+		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)-1);	
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Salida");
-		
 		this.notifyAll();
 		checkInvariante();
 		
@@ -67,7 +59,6 @@ public class Parque implements IParque{
 	private void imprimirInfo (String puerta, String movimiento){
 		System.out.println(movimiento + " por puerta " + puerta);
 		System.out.println("--> Personas en el parque " + contadorPersonasTotales);
-		
 		// Iteramos por todas las puertas e imprimimos sus entradas y salidas
 		for(String p: contadoresPersonasPuerta.keySet()){
 			System.out.println("----> Por puerta " + p + " " + contadoresPersonasPuerta.get(p));
