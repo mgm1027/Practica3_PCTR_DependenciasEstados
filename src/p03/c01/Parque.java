@@ -90,13 +90,25 @@ public class Parque implements IParque{
 		assert contadorPersonasTotales > 0 : "INV: El parque esta vacio";
 	}
 
-	protected void comprobarAntesDeEntrar(){	
-		
-	}
+	protected void comprobarAntesDeEntrar(){
+        if(contadorPersonasTotales >= aforoMaximo) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-	protected void comprobarAntesDeSalir(){		
-		
-	}
+    protected void comprobarAntesDeSalir(){
+        if(contadorPersonasTotales <= 0) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 
