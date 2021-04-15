@@ -21,7 +21,8 @@ public class Parque implements IParque{
 
 	@Override
 	public void entrarAlParque(String puerta){		// TODO
-		
+		//Comprobamos que el parque no se encuentre lleno.
+		comprobarAntesDeEntrar();
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
@@ -47,7 +48,8 @@ public class Parque implements IParque{
 	
 	@Override
 	public void salirDelParque(String puerta) {
-		
+		//Comprobamos que exita alguien que pueda salir del parque.
+		comprobarAntesDeSalir();
 		// Si no hay salida por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
 			contadoresPersonasPuerta.put(puerta, 0);
